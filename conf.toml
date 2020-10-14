@@ -1,9 +1,0 @@
-[Redis]
-Addr = "182.92.200.20:6379"
-DB = 0 
-Password = ""
-DialTimeout = 5
-
-[Mongo]
-Addr = "182.92.200.20:27017"
-

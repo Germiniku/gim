@@ -1,0 +1,8 @@
+[Redis]
+Addr = "127.0.0.1:6379"
+DB = 0 
+Password = ""
+DialTimeout = 5
+
+[Mongo]
+Addr = "127.0.0.1:27017"
