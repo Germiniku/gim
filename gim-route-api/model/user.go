@@ -3,13 +3,12 @@
  * @Author: Sun
  * @Date: 2020-10-14 14:24:54
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-10-14 17:10:04
+ * @LastEditTime: 2020-10-15 17:18:20
  */
 package model
 
 import (
 	"context"
-	"log"
 
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -18,12 +17,6 @@ type User struct {
 	Username string `bson:"username"`
 	Password string `bson:"password"`
 	NickName string `bson:"nickname"`
-}
-
-type UserRegister struct {
-	Username string `json:"username" binding:"required"`
-	Password string `json:"password" binding:"required"`
-	NickName string `json:"nickname" binding:"required"`
 }
 
 type UserLogin struct {
@@ -52,14 +45,14 @@ func GetUserByUsernameAndPassword(username, password string) *User {
 	return user
 }
 
-func CreateUser(userParams *UserRegister) bool {
-	user := newUser(userParams.Username, userParams.Password, userParams.NickName)
-	_, err := userCollection.InsertOne(context.TODO(), user)
+func CreateUser(username, password, nickname string) (int, bool) {
+	user := newUser(username, password, nickname)
+	res, err := userCollection.InsertOne(context.TODO(), user)
 	if err != nil {
-		log.Println("createUser Failed,Err:", err)
-		return false
+		return 0, false
 	}
-	return true
+	id := res.InsertedID.(int)
+	return id,true
 }
 
 func newUser(username, password, nickname string) User {

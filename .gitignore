@@ -2,5 +2,5 @@ go.sum
 .vscode 
 conf.toml
 *.exe
-/gim-route-api/.idea/
+/gim-server/.idea/
 *.test

@@ -3,7 +3,7 @@
  * @Author: Sun
  * @Date: 2020-10-14 14:17:55
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-10-14 15:32:24
+ * @LastEditTime: 2020-10-15 11:07:35
  */
 package main
 
@@ -36,5 +36,6 @@ func main() {
 		os.Exit(1)
 	}
 	server := router.Init()
+
 	server.Run()
 }
